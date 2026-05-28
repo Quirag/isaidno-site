@@ -5,16 +5,16 @@ pages that App Store Connect requires for submission (`isaidno.app` domain
 not yet registered — temporary canonical home).
 
 Live URLs once Pages is enabled:
-- `https://quirag.github.io/isaidno/`              ← marketing landing
-- `https://quirag.github.io/isaidno/support.html`  ← support contact + FAQ
-- `https://quirag.github.io/isaidno/privacy.html`  ← Privacy Policy
-- `https://quirag.github.io/isaidno/terms.html`    ← Terms of Service
+- `https://quirag.github.io/isaidno-site/`              ← marketing landing
+- `https://quirag.github.io/isaidno-site/support.html`  ← support contact + FAQ
+- `https://quirag.github.io/isaidno-site/privacy.html`  ← Privacy Policy
+- `https://quirag.github.io/isaidno-site/terms.html`    ← Terms of Service
 
 ## First-time setup (one-time, ~3 minutes)
 
 1. Create a public GitHub repository called `isaidno` under your account
    (or org). The repo name MUST be `isaidno` so the project-page URL
-   matches `quirag.github.io/isaidno/`.
+   matches `quirag.github.io/isaidno-site/`.
 2. From this directory:
    ```sh
    git init
