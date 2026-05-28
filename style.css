@@ -1,0 +1,125 @@
+/* I Said No — minimal brand site
+   Match the app: pure B&W, block typography, no decoration. */
+
+:root {
+    --bg: #000;
+    --text: #fff;
+    --text-secondary: rgba(255, 255, 255, 0.65);
+    --text-tertiary: rgba(255, 255, 255, 0.45);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--text-secondary); }
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+}
+
+/* Wordmark — same 2-line block typo as the app */
+.wordmark {
+    display: inline-block;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+}
+.wordmark.small { font-size: 18px; }
+.wordmark.large { font-size: 72px; }
+.wordmark > div { display: block; }
+
+header.site {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+}
+header.site a.brand { text-decoration: none; }
+header.site nav a { margin-left: 20px; font-size: 14px; }
+
+h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; margin: 0 0 8px; }
+h2 { font-size: 22px; font-weight: 800; margin: 32px 0 12px; }
+h3 { font-size: 17px; font-weight: 700; margin: 24px 0 8px; }
+
+p { margin: 0 0 14px; }
+.lead { font-size: 18px; color: var(--text-secondary); margin-bottom: 32px; }
+
+ul, ol { padding-left: 22px; margin: 0 0 16px; }
+li { margin-bottom: 6px; }
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+}
+
+strong { color: var(--text); font-weight: 700; }
+em { color: var(--text-secondary); font-style: italic; }
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+footer.site {
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-align: center;
+}
+footer.site a { color: var(--text-tertiary); margin: 0 8px; }
+
+.hero {
+    padding: 96px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+.hero .tagline {
+    margin-top: 24px;
+    font-size: 20px;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero .cta {
+    margin-top: 32px;
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--text);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 999px;
+}
+
+.crisis {
+    margin-top: 48px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.fineprint { font-size: 13px; color: var(--text-tertiary); }

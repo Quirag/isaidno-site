@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Privacy Policy — I Said No</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How I Said No handles your data. Short version: nothing leaves your device.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+    <a class="brand wordmark small" href="/">
+        <div>I SAID</div>
+        <div>NO.</div>
+    </a>
+    <nav>
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+    </nav>
+</header>
+<div class="container">
+<h1>Privacy Policy</h1>
+<p><strong>Effective date: 2026-05-26</strong></p>
+<p>I Said No is a journal app for people-pleaser recovery. It was built around one core idea: your private notes should stay private. This document explains, in plain language, exactly what data lives on your device, what never leaves it, and the few narrow cases where anything is sent off the device at all.</p>
+<p>If anything here is unclear, write to <strong>support@isaidno.app</strong> and we will answer in plain English.</p>
+<hr />
+<h2>1. Who we are</h2>
+<p>I Said No is an independent iOS application published by <strong>Noxra</strong> (the "Publisher," "we," "us," or "our"). The app is distributed exclusively through Apple's App Store. We are a one-person company. There is no backend server holding your account, because there is no account.</p>
+<p>Contact for any privacy question:</p>
+<ul>
+<li>Email: <strong>support@isaidno.app</strong></li>
+<li>Subject line suggestion: "Privacy"</li>
+</ul>
+<hr />
+<h2>2. The short version</h2>
+<ul>
+<li>We do <strong>not</strong> require an account. No name, no email, no phone number, no password.</li>
+<li>Your journal entries, photos, voice transcripts, body cues, and category preferences live <strong>on your device only</strong>, inside SwiftData and Apple's app-private Documents directory.</li>
+<li>The app <strong>does not have a backend</strong>. We literally have nowhere to send your data, because we did not build a server to receive it.</li>
+<li>Payments are processed by <strong>Apple</strong> through StoreKit. We never see your card number, billing address, or Apple ID.</li>
+<li>We use <strong>PostHog</strong> for anonymous, opt-in product analytics. The identifier is a random UUID generated on-device. No personally identifiable information is sent.</li>
+<li>Calendar access is <strong>read-only</strong> and never transmitted off your device.</li>
+<li>Microphone and camera are <strong>opt-in</strong> and the resulting files are stored locally only.</li>
+<li>Speech recognition runs <strong>on-device only</strong> (<code>requiresOnDeviceRecognition = true</code>). The audio is never uploaded to Apple's servers and is never saved by the app once the transcript is produced.</li>
+<li>AI features (when present on iOS 26+ devices with Apple Intelligence) use Apple's <strong>Foundation Models</strong> framework, which runs entirely on-device.</li>
+<li>We do not share your data with third parties for advertising. We do not sell your data. We do not "rent," "license," or "broker" your data.</li>
+</ul>
+<p>If you want the full picture, keep reading.</p>
+<hr />
+<h2>3. What we collect, where it lives, what happens to it</h2>
+<p>The app collects only what is strictly required to make the features work. The default is: collect nothing off-device.</p>
+<h3>3.1 Journal entries (the "no" you log)</h3>
+<p>When you tap the NO. button, the app records:</p>
+<ul>
+<li>The timestamp.</li>
+<li>The category you picked (Family, Work, Past, Friends, Partner, or a custom category you created).</li>
+<li>An optional short note you typed.</li>
+<li>An optional photo or voice memo, if you opted into the "Capture after log" feature.</li>
+<li>A flag whether this was a "permission slip" entry.</li>
+</ul>
+<p><strong>Where it lives:</strong> in a local SwiftData store inside the App Group container <code>group.com.noxra.isaidno</code>. This container is private to your device and shared only with the I Said No widget and the I Said No Apple Watch app (both ours). It is <strong>not</strong> uploaded anywhere. It is <strong>not</strong> synced through iCloud unless you explicitly choose to back up your iPhone via Apple's standard encrypted iCloud backup, which is between you and Apple — we have no access to it.</p>
+<h3>3.2 Body Cues</h3>
+<p>The Silent Pulse feature increments a private counter when you trigger it. The counter and its timestamps are stored locally in SwiftData. Same App Group, same privacy properties as above.</p>
+<h3>3.3 Photos (opt-in)</h3>
+<p>If you attach a photo to an entry, the file is saved in your app-private Documents directory. The file path is referenced from the corresponding entry in SwiftData. The image <strong>never</strong> leaves the device unless you yourself export it (for example, by sharing the entry from iOS share sheet).</p>
+<h3>3.4 Voice memos (opt-in)</h3>
+<p>If you record a voice memo, the app:</p>
+<ol>
+<li>Asks iOS to run speech recognition <strong>on-device</strong> (<code>requiresOnDeviceRecognition = true</code>).</li>
+<li>Saves the resulting text transcript onto the corresponding journal entry.</li>
+<li><strong>Discards the audio</strong>. The raw audio file is not retained.</li>
+</ol>
+<p>This is a deliberate design choice. Audio is intimate; text is searchable. We keep only what you can re-read later.</p>
+<h3>3.5 Calendar (opt-in, read-only)</h3>
+<p>If you turn on Calendar Prep notifications in Settings, the app asks iOS for read-only access to your calendar. We then look for events in the next 24 hours whose attendees, organizer, or title match the recipient name(s) you set during onboarding. For each matching event we schedule a <strong>local</strong> notification 30 minutes before the event, plus an optional Decline Coach prompt 5 minutes before.</p>
+<ul>
+<li>We never upload calendar contents anywhere.</li>
+<li>We never write to your calendar.</li>
+<li>We never share matched events with any third party.</li>
+<li>You can revoke calendar access at any time in iOS Settings → Privacy &amp; Security → Calendars → I Said No.</li>
+</ul>
+<h3>3.6 Microphone and camera (opt-in)</h3>
+<p>These permissions are only requested if you tap a feature that needs them (voice capture, photo capture). Captured files are stored locally. Revoke at any time in iOS Settings → Privacy &amp; Security.</p>
+<h3>3.7 Speech recognition (opt-in)</h3>
+<p>Speech recognition is requested only when you record a voice memo. The recognition is configured to run on-device (<code>requiresOnDeviceRecognition = true</code>). The audio is not uploaded to Apple's speech servers.</p>
+<h3>3.8 Notifications</h3>
+<p>Local notifications are scheduled by the app for calendar prep and weekly Wrapped reminders. They are scheduled and delivered entirely by iOS on your device. No push server is involved.</p>
+<h3>3.9 Apple Intelligence / Foundation Models (iOS 26+ only)</h3>
+<p>On devices that support Apple Intelligence, some optional features use Apple's <strong>Foundation Models</strong> framework. This framework runs models entirely on-device. The contents of your prompts and responses do not leave the device. We do not collect or store the prompts.</p>
+<h3>3.10 Subscriptions and payments</h3>
+<p>In-app purchases (the $3.99/month, $29/year, or $59 lifetime founders plan) are processed exclusively by Apple through <strong>StoreKit 2</strong>. We receive only the entitlement state (e.g. "this device has an active subscription"). We <strong>never</strong> see:</p>
+<ul>
+<li>Your credit card or debit card number.</li>
+<li>Your Apple ID email.</li>
+<li>Your billing address.</li>
+<li>Any tax or country information beyond what is needed by Apple for purchase.</li>
+</ul>
+<p>Refunds, billing questions, and cancellations go through Apple. See "How to cancel" below.</p>
+<h3>3.11 Crash logs</h3>
+<p>If the app crashes, iOS may collect a crash log. If you have opted into <strong>Share with App Developers</strong> in iOS Settings → Privacy &amp; Security → Analytics &amp; Improvements, Apple will share an anonymous crash report with us. We use it only to fix bugs. We do not enrich it with other data.</p>
+<h3>3.12 Anonymous product analytics (opt-in, optional)</h3>
+<p>When the analytics opt-in is enabled, the app uses <strong>PostHog</strong> (hosted on PostHog's EU infrastructure). Events sent are limited to anonymous interaction signals such as "user logged a no," "user opened the library," or "user finished onboarding." No journal content, no note text, no photos, no transcripts, no calendar contents are ever sent.</p>
+<p>The identifier attached to events is a <strong>random UUID</strong> generated and stored on-device the first time analytics are enabled. It is not derived from any Apple ID, device ID, IDFA, advertising identifier, email, or phone number. We cannot tie it back to a real person. Hitting "Reset all data" in Settings regenerates a fresh UUID.</p>
+<p>You can disable analytics at any time and the analytics calls become no-ops.</p>
+<hr />
+<h2>4. What we do NOT collect</h2>
+<p>We do not collect, store, or transmit:</p>
+<ul>
+<li>Your name.</li>
+<li>Your email address.</li>
+<li>Your phone number.</li>
+<li>Your physical address.</li>
+<li>Your location (GPS, beacons, IP-based geolocation, or otherwise).</li>
+<li>Your contacts.</li>
+<li>Your health or fitness data (HealthKit is not integrated).</li>
+<li>Your financial information.</li>
+<li>Your browsing or search history.</li>
+<li>Your social graph.</li>
+<li>Your audio recordings (we transcribe on-device, then discard the audio).</li>
+</ul>
+<p>We do not place advertising SDKs, attribution SDKs, "session replay" SDKs, or marketing SDKs in this app. There is no Facebook SDK, no Google SDK (no Firebase, no Analytics, no Tag Manager), no AppsFlyer, no Adjust, no Branch, no Singular.</p>
+<hr />
+<h2>5. How your data leaves your device (and when it does not)</h2>
+<p>In the default configuration of the app, the only network traffic is:</p>
+<ul>
+<li><strong>Apple StoreKit</strong> to validate subscriptions and process purchases.</li>
+<li><strong>Apple's APIs</strong> for OS features (notifications, recognition models download, etc.).</li>
+<li><strong>PostHog</strong> for anonymous analytics, but <strong>only if you have opted in</strong>.</li>
+</ul>
+<p>That is the complete list. There is no other server.</p>
+<p>If you want to verify this, the app's <code>Info.plist</code> declares no arbitrary domain exceptions, and the bundle does not embed any networking framework beyond Apple's URLSession used for the cases above.</p>
+<hr />
+<h2>6. Third parties</h2>
+<h3>Apple</h3>
+<p>Apple processes payments, hosts the App Store listing, and delivers system services (push, speech models, notifications, Foundation Models). Apple's own privacy policy applies: https://www.apple.com/privacy/</p>
+<h3>PostHog (analytics, opt-in only)</h3>
+<p>PostHog Inc. is our analytics processor. Events are routed to PostHog's EU hosting. They never receive any personal identifier — only a random UUID — and never receive your journal contents. PostHog's privacy policy: https://posthog.com/privacy</p>
+<p>We do <strong>not</strong> share data with any other third party. We do <strong>not</strong> sell data. We do <strong>not</strong> allow data to be used for advertising profiling.</p>
+<hr />
+<h2>7. Children</h2>
+<p>I Said No is intended for <strong>adults</strong>. We do not knowingly collect data from children under 13. If you believe a child has used the app and you would like local data deleted from a device you control, simply tap <strong>Settings → Reset all data</strong> in the app.</p>
+<hr />
+<h2>8. Your rights (GDPR, CCPA, and similar)</h2>
+<p>Because the app does not have a backend, your data has always been under your direct control. You exercise your rights through the app itself:</p>
+<ul>
+<li><strong>Right of access / data portability.</strong> Settings → "Export data (JSON)" produces a JSON file containing every logged no, body cue, custom category, and the metadata of any photos or voice transcripts you have saved. The file is generated on-device, written to your iOS Files app, and is yours to keep, share, or import elsewhere.</li>
+<li><strong>Right to deletion / right to be forgotten.</strong> Settings → "Reset all data" deletes every entry, body cue, photo, transcript, and stored preference from your device. It also clears the App Group container shared with the widget and the watch app. Once you tap "Reset," the data is gone — we have no backend copy.</li>
+<li><strong>Right to rectification.</strong> You can edit or delete individual entries directly inside the app.</li>
+<li><strong>Right to restrict processing.</strong> Toggling off analytics in Settings stops the only optional outbound data flow.</li>
+<li><strong>Right to object.</strong> Same as above — opt out of analytics, or do not enable it in the first place.</li>
+<li><strong>Right to withdraw consent.</strong> You can revoke any iOS permission (calendar, mic, camera, notifications, speech) in iOS Settings → Privacy &amp; Security at any time. The app will fail gracefully on the affected feature.</li>
+<li><strong>California residents (CCPA / CPRA).</strong> We do not sell or share personal information in the meaning of California law. We do not engage in cross-context behavioral advertising. You have the same access and deletion rights described above, exercisable in-app.</li>
+<li><strong>Right to lodge a complaint.</strong> EU/EEA users may contact their national supervisory authority. UK users may contact the ICO.</li>
+</ul>
+<p>Because we have no backend, we cannot delete data from a phone we do not control. If you lose your phone, the data is on the phone, not on a server we can reach.</p>
+<hr />
+<h2>9. Data retention</h2>
+<p>Locally on your device: as long as you choose to keep it. The app never auto-deletes your journal entries.</p>
+<p>On our servers: there are no servers, so retention is zero by construction.</p>
+<p>In analytics (if opted in): PostHog retains anonymous events according to their standard retention policy. Because the identifier is a random UUID with no link to you, the events cannot be associated with a person.</p>
+<hr />
+<h2>10. Security</h2>
+<p>Your journal lives inside the iOS sandbox, which means:</p>
+<ul>
+<li>Other apps on your device cannot read it.</li>
+<li>It is protected by the iOS file protection class (<code>NSFileProtectionComplete</code>-style behavior by default), which encrypts the data at rest when your device is locked.</li>
+<li>It is backed up only if <strong>you</strong> have enabled iCloud Backup or local encrypted backups. Those backups are managed by Apple under your Apple ID.</li>
+</ul>
+<p>Network calls to Apple and (if opted in) to PostHog go over HTTPS.</p>
+<p>No security model is perfect. If you suspect your device is compromised, "Reset all data" in Settings is the nuclear option and works without network access.</p>
+<hr />
+<h2>11. International transfers</h2>
+<p>If analytics are opted in, anonymous events are processed by PostHog in the EU. No personal data is transferred outside the EU by us. Apple's services may transit through Apple infrastructure under Apple's privacy policy.</p>
+<hr />
+<h2>12. How to cancel a subscription</h2>
+<p>All subscriptions are managed by Apple. To cancel:</p>
+<ol>
+<li>Open iOS <strong>Settings</strong>.</li>
+<li>Tap your name at the top.</li>
+<li>Tap <strong>Subscriptions</strong>.</li>
+<li>Tap <strong>I Said No</strong>.</li>
+<li>Tap <strong>Cancel Subscription</strong>.</li>
+</ol>
+<p>Cancellation takes effect at the end of the current billing period. We do not handle cancellations directly because we do not handle billing directly.</p>
+<p>For refunds, use Apple's "Report a Problem" page: https://reportaproblem.apple.com — refund decisions are Apple's, not ours.</p>
+<hr />
+<h2>13. Changes to this policy</h2>
+<p>If we materially change this policy, we will update the <strong>effective date</strong> at the top and surface a notice inside the app the next time you open it. Older versions remain available on request.</p>
+<p>Cosmetic edits (typos, formatting) may happen without notice.</p>
+<hr />
+<h2>14. Contact</h2>
+<p>For any privacy concern, write to <strong>support@isaidno.app</strong> with subject "Privacy." A human will read it. There is no chatbot.</p>
+<hr />
+<p><em>Thank you for trusting this app with the small, careful work of saying no. We took the design choices we did because we believe the journal of your interior life belongs to you and no one else.</em></p></div>
+<footer class="site">
+    <a href="/">Home</a> ·
+    <a href="support.html">Support</a> ·
+    <a href="privacy.html">Privacy</a> ·
+    <a href="terms.html">Terms</a>
+    <br><br>
+    © 2026 Noxra
+</footer>
+</body>
+</html>
